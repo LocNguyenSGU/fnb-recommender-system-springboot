@@ -1,0 +1,1909 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "F&B Recommender System API",
+    "description": "RESTful API for Food & Beverage Recommender System with shop management, menus, reviews, and blogs",
+    "contact": { "name": "API Support", "email": "support@example.com" },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    { "url": "http://localhost:8080", "description": "Development Server" }
+  ],
+  "paths": {
+    "/api/users/{id}": {
+      "get": {
+        "tags": ["user-controller"],
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["user-controller"],
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["user-controller"],
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/shops/{id}": {
+      "get": {
+        "tags": ["shop-controller"],
+        "operationId": "getShopById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ShopResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["shop-controller"],
+        "operationId": "updateShop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ShopRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ShopResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["shop-controller"],
+        "operationId": "deleteShop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/reviews/{id}": {
+      "get": {
+        "tags": ["review-controller"],
+        "operationId": "getReviewById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ReviewResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["review-controller"],
+        "operationId": "updateReview",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ReviewRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ReviewResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["review-controller"],
+        "operationId": "deleteReview",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/menus/{id}": {
+      "get": {
+        "tags": ["menu-controller"],
+        "operationId": "getMenuById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MenuResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["menu-controller"],
+        "operationId": "updateMenu",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MenuRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MenuResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["menu-controller"],
+        "operationId": "deleteMenu",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/menu-items/{id}": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "getMenuItemById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MenuItemResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["menu-item-controller"],
+        "operationId": "updateMenuItem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MenuItemRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MenuItemResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["menu-item-controller"],
+        "operationId": "deleteMenuItem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/comments/{id}": {
+      "get": {
+        "tags": ["comment-controller"],
+        "operationId": "getCommentById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CommentResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["comment-controller"],
+        "operationId": "updateComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CommentRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CommentResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["comment-controller"],
+        "operationId": "deleteComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/categories/{id}": {
+      "get": {
+        "tags": ["category-controller"],
+        "operationId": "getCategoryById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CategoryResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["category-controller"],
+        "operationId": "updateCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CategoryRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CategoryResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["category-controller"],
+        "operationId": "deleteCategory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/blogs/{id}": {
+      "get": {
+        "tags": ["blog-controller"],
+        "operationId": "getBlogById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BlogResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["blog-controller"],
+        "operationId": "updateBlog",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BlogRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BlogResponseDTO" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["blog-controller"],
+        "operationId": "deleteBlog",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/users": {
+      "get": {
+        "tags": ["user-controller"],
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["user-controller"],
+        "operationId": "createUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shops": {
+      "get": {
+        "tags": ["shop-controller"],
+        "operationId": "getAllShops",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ShopResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["shop-controller"],
+        "operationId": "createShop",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ShopRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ShopResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reviews": {
+      "get": {
+        "tags": ["review-controller"],
+        "operationId": "getAllReviews",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ReviewResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["review-controller"],
+        "operationId": "createReview",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ReviewRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ReviewResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menus": {
+      "get": {
+        "tags": ["menu-controller"],
+        "operationId": "getAllMenus",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/MenuResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["menu-controller"],
+        "operationId": "createMenu",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MenuRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MenuResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "getAllMenuItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MenuItemResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["menu-item-controller"],
+        "operationId": "createMenuItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MenuItemRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MenuItemResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items/{id}/view": {
+      "post": {
+        "tags": ["menu-item-controller"],
+        "operationId": "incrementViewCount",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/comments": {
+      "get": {
+        "tags": ["comment-controller"],
+        "operationId": "getAllComments",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/CommentResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["comment-controller"],
+        "operationId": "createComment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CommentRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CommentResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories": {
+      "get": {
+        "tags": ["category-controller"],
+        "operationId": "getAllCategories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["category-controller"],
+        "operationId": "createCategory",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CategoryRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CategoryResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/blogs": {
+      "get": {
+        "tags": ["blog-controller"],
+        "operationId": "getAllBlogs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/BlogResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["blog-controller"],
+        "operationId": "createBlog",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BlogRequestDTO" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BlogResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/blogs/{id}/like": {
+      "post": {
+        "tags": ["blog-controller"],
+        "operationId": "incrementLikesCount",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/users/username/{username}": {
+      "get": {
+        "tags": ["user-controller"],
+        "operationId": "getUserByUsername",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/exists/username/{username}": {
+      "get": {
+        "tags": ["user-controller"],
+        "operationId": "existsByUsername",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { "schema": { "type": "boolean" } }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/exists/email/{email}": {
+      "get": {
+        "tags": ["user-controller"],
+        "operationId": "existsByEmail",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { "schema": { "type": "boolean" } }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/email/{email}": {
+      "get": {
+        "tags": ["user-controller"],
+        "operationId": "getUserByEmail",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shops/status/{status}": {
+      "get": {
+        "tags": ["shop-controller"],
+        "operationId": "getShopsByStatus",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ShopResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shops/search": {
+      "get": {
+        "tags": ["shop-controller"],
+        "operationId": "searchShopsByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ShopResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shops/owner/{ownerId}": {
+      "get": {
+        "tags": ["shop-controller"],
+        "operationId": "getShopsByOwnerId",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ShopResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shops/nearby": {
+      "get": {
+        "tags": ["shop-controller"],
+        "operationId": "findShopsWithinRadius",
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "number", "format": "double" }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "number", "format": "double" }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "number", "format": "double" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ShopResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/shops/category/{categoryId}": {
+      "get": {
+        "tags": ["shop-controller"],
+        "operationId": "getShopsByCategoryId",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ShopResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reviews/user/{userId}": {
+      "get": {
+        "tags": ["review-controller"],
+        "operationId": "getReviewsByUserId",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ReviewResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reviews/shop/{shopId}": {
+      "get": {
+        "tags": ["review-controller"],
+        "operationId": "getReviewsByShopId",
+        "parameters": [
+          {
+            "name": "shopId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ReviewResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reviews/shop/{shopId}/count": {
+      "get": {
+        "tags": ["review-controller"],
+        "operationId": "countReviewsByShopId",
+        "parameters": [
+          {
+            "name": "shopId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "type": "integer", "format": "int64" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reviews/shop/{shopId}/average-rating": {
+      "get": {
+        "tags": ["review-controller"],
+        "operationId": "getAverageRatingByShopId",
+        "parameters": [
+          {
+            "name": "shopId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "type": "number", "format": "double" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menus/shop/{shopId}": {
+      "get": {
+        "tags": ["menu-controller"],
+        "operationId": "getMenusByShopId",
+        "parameters": [
+          {
+            "name": "shopId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/MenuResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menus/search": {
+      "get": {
+        "tags": ["menu-controller"],
+        "operationId": "searchMenusByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/MenuResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items/top-viewed": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "getTopViewedMenuItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MenuItemResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items/signature": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "getSignatureMenuItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MenuItemResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items/search": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "searchMenuItemsByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MenuItemResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items/menu/{menuId}": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "getMenuItemsByMenuId",
+        "parameters": [
+          {
+            "name": "menuId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MenuItemResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items/menu/{menuId}/available": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "getAvailableMenuItemsByMenuId",
+        "parameters": [
+          {
+            "name": "menuId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MenuItemResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu-items/hot": {
+      "get": {
+        "tags": ["menu-item-controller"],
+        "operationId": "getHotMenuItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MenuItemResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/user/{userId}": {
+      "get": {
+        "tags": ["comment-controller"],
+        "operationId": "getCommentsByUserId",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/CommentResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments/blog/{blogId}": {
+      "get": {
+        "tags": ["comment-controller"],
+        "operationId": "getCommentsByBlogId",
+        "parameters": [
+          {
+            "name": "blogId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/CommentResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories/name/{name}": {
+      "get": {
+        "tags": ["category-controller"],
+        "operationId": "getCategoryByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CategoryResponseDTO" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories/exists/name/{name}": {
+      "get": {
+        "tags": ["category-controller"],
+        "operationId": "existsByName",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { "schema": { "type": "boolean" } }
+            }
+          }
+        }
+      }
+    },
+    "/api/blogs/top-liked": {
+      "get": {
+        "tags": ["blog-controller"],
+        "operationId": "getTopLikedBlogs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/BlogResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/blogs/status/{status}": {
+      "get": {
+        "tags": ["blog-controller"],
+        "operationId": "getBlogsByStatus",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/BlogResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/blogs/search": {
+      "get": {
+        "tags": ["blog-controller"],
+        "operationId": "searchBlogsByTitle",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/BlogResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/blogs/author/{authorId}": {
+      "get": {
+        "tags": ["blog-controller"],
+        "operationId": "getBlogsByAuthorId",
+        "parameters": [
+          {
+            "name": "authorId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer", "format": "int64" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/BlogResponseDTO" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserRequestDTO": {
+        "required": ["email", "fullName", "password", "username"],
+        "type": "object",
+        "properties": {
+          "username": { "maxLength": 50, "minLength": 3, "type": "string" },
+          "password": { "maxLength": 100, "minLength": 6, "type": "string" },
+          "fullName": { "maxLength": 100, "minLength": 0, "type": "string" },
+          "email": { "maxLength": 100, "minLength": 0, "type": "string" },
+          "phone": { "maxLength": 20, "minLength": 0, "type": "string" },
+          "avatarUrl": { "maxLength": 255, "minLength": 0, "type": "string" }
+        }
+      },
+      "UserResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "username": { "type": "string" },
+          "fullName": { "type": "string" },
+          "email": { "type": "string" },
+          "phone": { "type": "string" },
+          "avatarUrl": { "type": "string" },
+          "provider": { "type": "string" },
+          "role": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "LocalTime": {
+        "type": "object",
+        "properties": {
+          "hour": { "type": "integer", "format": "int32" },
+          "minute": { "type": "integer", "format": "int32" },
+          "second": { "type": "integer", "format": "int32" },
+          "nano": { "type": "integer", "format": "int32" }
+        }
+      },
+      "ShopRequestDTO": {
+        "required": ["categoryId", "name", "ownerId"],
+        "type": "object",
+        "properties": {
+          "ownerId": { "type": "integer", "format": "int64" },
+          "categoryId": { "type": "integer", "format": "int64" },
+          "name": { "maxLength": 255, "minLength": 0, "type": "string" },
+          "address": { "maxLength": 1000, "minLength": 0, "type": "string" },
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" },
+          "openTime": { "$ref": "#/components/schemas/LocalTime" },
+          "closeTime": { "$ref": "#/components/schemas/LocalTime" },
+          "status": { "maxLength": 20, "minLength": 0, "type": "string" },
+          "images": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "ShopResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "ownerId": { "type": "integer", "format": "int64" },
+          "ownerName": { "type": "string" },
+          "categoryId": { "type": "integer", "format": "int64" },
+          "categoryName": { "type": "string" },
+          "name": { "type": "string" },
+          "address": { "type": "string" },
+          "latitude": { "type": "number" },
+          "longitude": { "type": "number" },
+          "openTime": { "$ref": "#/components/schemas/LocalTime" },
+          "closeTime": { "$ref": "#/components/schemas/LocalTime" },
+          "status": { "type": "string" },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ReviewRequestDTO": {
+        "required": ["rating", "shopId", "userId"],
+        "type": "object",
+        "properties": {
+          "userId": { "type": "integer", "format": "int64" },
+          "shopId": { "type": "integer", "format": "int64" },
+          "rating": {
+            "maximum": 5,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": { "maxLength": 2000, "minLength": 0, "type": "string" }
+        }
+      },
+      "Reply": {
+        "type": "object",
+        "properties": {
+          "userId": { "type": "integer", "format": "int64" },
+          "userName": { "type": "string" },
+          "content": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ReviewResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "userId": { "type": "integer", "format": "int64" },
+          "userName": { "type": "string" },
+          "shopId": { "type": "integer", "format": "int64" },
+          "shopName": { "type": "string" },
+          "rating": { "type": "integer", "format": "int32" },
+          "content": { "type": "string" },
+          "replies": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Reply" }
+          },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "MenuRequestDTO": {
+        "required": ["name", "shopId"],
+        "type": "object",
+        "properties": {
+          "shopId": { "type": "integer", "format": "int64" },
+          "name": { "maxLength": 100, "minLength": 0, "type": "string" },
+          "images": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "MenuResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "shopId": { "type": "integer", "format": "int64" },
+          "shopName": { "type": "string" },
+          "name": { "type": "string" },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "MenuItemRequestDTO": {
+        "required": ["menuId", "name", "price"],
+        "type": "object",
+        "properties": {
+          "menuId": { "type": "integer", "format": "int64" },
+          "name": { "maxLength": 100, "minLength": 0, "type": "string" },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 0,
+            "type": "string"
+          },
+          "price": {
+            "minimum": 0.0,
+            "exclusiveMinimum": true,
+            "type": "number"
+          },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "isAvailable": { "type": "boolean" },
+          "isHot": { "type": "boolean" },
+          "isSignature": { "type": "boolean" }
+        }
+      },
+      "MenuItemResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "menuId": { "type": "integer", "format": "int64" },
+          "menuName": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "price": { "type": "number" },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "isAvailable": { "type": "boolean" },
+          "isHot": { "type": "boolean" },
+          "isSignature": { "type": "boolean" },
+          "viewCount": { "type": "integer", "format": "int32" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "CommentRequestDTO": {
+        "required": ["blogId", "content", "userId"],
+        "type": "object",
+        "properties": {
+          "blogId": { "type": "integer", "format": "int64" },
+          "userId": { "type": "integer", "format": "int64" },
+          "content": { "maxLength": 1000, "minLength": 0, "type": "string" }
+        }
+      },
+      "CommentResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "blogId": { "type": "integer", "format": "int64" },
+          "userId": { "type": "integer", "format": "int64" },
+          "userName": { "type": "string" },
+          "content": { "type": "string" },
+          "replies": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Reply" }
+          },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "CategoryRequestDTO": {
+        "required": ["name"],
+        "type": "object",
+        "properties": {
+          "name": { "maxLength": 100, "minLength": 0, "type": "string" },
+          "description": { "maxLength": 500, "minLength": 0, "type": "string" }
+        }
+      },
+      "CategoryResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "BlogRequestDTO": {
+        "required": ["authorId", "content", "title"],
+        "type": "object",
+        "properties": {
+          "authorId": { "type": "integer", "format": "int64" },
+          "title": { "maxLength": 255, "minLength": 0, "type": "string" },
+          "content": { "type": "string" },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "status": { "maxLength": 20, "minLength": 0, "type": "string" }
+        }
+      },
+      "BlogResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int64" },
+          "authorId": { "type": "integer", "format": "int64" },
+          "authorName": { "type": "string" },
+          "title": { "type": "string" },
+          "content": { "type": "string" },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "likesCount": { "type": "integer", "format": "int32" },
+          "status": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

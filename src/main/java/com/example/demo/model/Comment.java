@@ -12,7 +12,6 @@ import org.hibernate.type.SqlTypes;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -38,7 +37,7 @@ public class Comment {
     
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
-    private List<Map<String, Object>> replies = new ArrayList<>();
+    private List<Reply> replies = new ArrayList<>();
     
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
