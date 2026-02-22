@@ -1,9 +1,12 @@
 package com.example.demo.config;
 
+import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +18,12 @@ public class OpenApiConfig {
     
     @Bean
     public OpenAPI openAPI() {
+        final String securitySchemeName = "bearerAuth";
+        
         return new OpenAPI()
                 .info(new Info()
-                        .title("F&B Recommender System API")
-                        .description("RESTful API for Food & Beverage Recommender System with shop management, menus, reviews, and blogs")
+                        .title("F&B Recommender System API - Authentication")
+                        .description("RESTful API cho hệ thống đăng nhập, đăng ký, xác thực email, quên mật khẩu, OAuth2 (Google/Facebook), và JWT token management")
                         .version("1.0.0")
                         .contact(new Contact()
                                 .name("API Support")
@@ -29,7 +34,19 @@ public class OpenApiConfig {
                 .servers(List.of(
                         new Server()
                                 .url("http://localhost:8080")
-                                .description("Development Server")
-                ));
+                                .description("Development Server"),
+                        new Server()
+                                .url("https://api.example.com")
+                                .description("Production Server")
+                ))
+                .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
+                .components(new Components()
+                        .addSecuritySchemes(securitySchemeName,
+                                new SecurityScheme()
+                                        .name(securitySchemeName)
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")
+                                        .description("JWT token nhận được sau khi đăng nhập. Format: Bearer {token}")));
     }
 }

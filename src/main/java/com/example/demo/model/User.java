@@ -50,6 +50,9 @@ public class User {
     @Column(length = 20)
     private String role = "user";
     
+    @Column(name = "is_verified")
+    private Boolean isVerified = false;
+    
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
