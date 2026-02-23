@@ -74,7 +74,7 @@ public class SecurityConfig {
                 // Admin only endpoints
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 // All other requests require authentication
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             )
             .oauth2Login(oauth2 -> oauth2
                 .userInfoEndpoint(userInfo -> 

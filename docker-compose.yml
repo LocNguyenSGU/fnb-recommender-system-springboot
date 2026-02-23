@@ -1,0 +1,58 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: fnb-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: fnb_recommender_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - fnb_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d fnb_recommender_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    image: locnguyen04/fnb-recommender:latest
+    container_name: fnb-api
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fnb_recommender_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      JWT_SECRET: your-256-bit-secret-key-change-in-production-please-use-at-least-32-characters
+      JWT_ACCESS_EXPIRATION: 900000
+      JWT_REFRESH_EXPIRATION: 604800000
+      MAIL_USERNAME: ""
+      MAIL_PASSWORD: ""
+      GOOGLE_CLIENT_ID: dummy-client-id-replace-in-production
+      GOOGLE_CLIENT_SECRET: dummy-client-secret-replace-in-production
+      FACEBOOK_APP_ID: dummy-app-id-replace-in-production
+      FACEBOOK_APP_SECRET: dummy-app-secret-replace-in-production
+      FRONTEND_URL: http://localhost:3000
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    image: locnguyen04/web-kbang:latest
+    container_name: web-kbang-app
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_started
+
+volumes:
+  fnb_postgres_data:

@@ -1,0 +1,47 @@
+# Build artifacts
+target/
+*.class
+*.jar
+*.war
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+*.sw?
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# Maven wrapper
+.mvn/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation and non-essential files
+*.md
+docs/
+skills/
+HELP.md
+README.md
+QUICKSTART.md
+API_DOCUMENTATION.md
+PHASE-7-COMPLETION-SUMMARY.md
+
+# Environment and config files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Test files
+src/test/
