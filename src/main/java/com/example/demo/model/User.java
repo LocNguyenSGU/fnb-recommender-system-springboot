@@ -48,7 +48,7 @@ public class User {
     private String provider = "local";
     
     @Column(length = 20)
-    private String role = "user";
+    private String role = "ROLE_USER";
     
     @Column(name = "is_verified")
     private Boolean isVerified = false;

@@ -1,5 +1,6 @@
 package com.example.demo.mapper;
 
+import com.example.demo.dto.request.UpdateUserRequestDTO;
 import com.example.demo.dto.request.UserRequestDTO;
 import com.example.demo.dto.response.UserResponseDTO;
 import com.example.demo.model.User;
@@ -21,16 +22,16 @@ public class UserMapper {
         return modelMapper.map(entity, UserResponseDTO.class);
     }
     
-    public void updateEntityFromDTO(User entity, UserRequestDTO dto) {
+    public void updateEntityFromDTO(User entity, UpdateUserRequestDTO dto) {
         // Update only non-null fields
         if (dto.getUsername() != null) {
             entity.setUsername(dto.getUsername());
         }
-        if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
-            entity.setPassword(dto.getPassword());
-        }
         if (dto.getFullName() != null) {
             entity.setFullName(dto.getFullName());
+        }
+        if (dto.getRole() != null) {
+            entity.setRole(dto.getRole());
         }
         if (dto.getEmail() != null) {
             entity.setEmail(dto.getEmail());

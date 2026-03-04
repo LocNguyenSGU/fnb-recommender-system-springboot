@@ -71,10 +71,11 @@ public class SecurityConfig {
                     "/swagger-resources/**",
                     "/webjars/**"
                 ).permitAll()
+                .anyRequest().authenticated()
                 // Admin only endpoints
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                // All other requests require authentication
-                .anyRequest().permitAll()
+//                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+
+
             )
             .oauth2Login(oauth2 -> oauth2
                 .userInfoEndpoint(userInfo -> 

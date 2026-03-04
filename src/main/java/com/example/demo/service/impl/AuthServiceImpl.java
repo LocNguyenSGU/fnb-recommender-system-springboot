@@ -108,9 +108,9 @@ public class AuthServiceImpl implements AuthService {
             throw new UnauthorizedException("Invalid credentials");
         }
         
-        if (!user.getIsVerified()) {
-            throw new EmailNotVerifiedException("Email not verified. Please check your email.");
-        }
+//        if (!user.getIsVerified()) {
+//            throw new EmailNotVerifiedException("Email not verified. Please check your email.");
+//        }
         
         // Generate tokens
         String accessToken = jwtTokenService.generateAccessToken(user);

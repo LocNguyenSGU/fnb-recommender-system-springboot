@@ -99,6 +99,11 @@ public class EmailServiceImpl implements EmailService {
     }
     
     private void sendEmail(String to, String subject, String htmlContent) throws MessagingException {
+        if (fromEmail == null || fromEmail.isBlank()) {
+            log.warn("Email not sent - fromEmail is not configured. To: {}, Subject: {}", to, subject);
+            return;
+        }
+        
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
         
